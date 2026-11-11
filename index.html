@@ -1,0 +1,338 @@
+<!doctype html>
+
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="./style/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Totaliza</title>
+  </head>
+
+  <body>
+    <div class="menu">
+      <div class="container align-items-center">
+        <h1>
+          <img
+            src="./images/Totaliza-logo-white.svg"
+            alt="Totaliza Logo"
+            class="logo-totaliza"
+          />
+        </h1>
+
+        <nav>
+          <a class="quem-somos" href="./pages/aboutus.html">Quem somos?</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="list-body">
+      <div class="container d-flex justify-content-center">
+        <div class="lista-fundo">
+          <div class="orcamento">
+            <label class="orcamento-title">Orçamento:</label>
+
+            <div class="orcamento-input-group">
+              <span id="orcamento-valor" class="budget">R$ 9,99</span>
+
+              <button class="edit-bg">
+                <img src="./images/edit.png" alt="Editar" class="edit-icon" />
+              </button>
+            </div>
+          </div>
+
+          <div class="total-compra-container">
+            <span class="total-label">Valor total da compra:</span>
+
+            <div class="total-badge" id="totalCarrinho">R$ 0,00</div>
+          </div>
+          <div
+            id="mensagemEstouro"
+            class="alerta-orcamento"
+            style="display: none"
+          >
+            Seu orçamento estourou!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-addProduct">
+      <button
+        type="button"
+        class="botao-adicionar"
+        data-toggle="modal"
+        data-target="#modalProduto"
+        aria-label="Adicionar produto"
+      >
+        +
+      </button>
+    </div>
+
+    <div
+      class="modal fade"
+      id="modalProduto"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="tituloModalProduto"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="tituloModalProduto">
+              Adicionar produto
+            </h5>
+          </div>
+
+          <form id="formProduto">
+            <div class="modal-body">
+              <div class="form-group">
+                <label class="label label-name" for="nomeProduto"
+                  >Nome do produto</label
+                >
+
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nomeProduto"
+                  placeholder="Ex.: Leite Integral"
+                  maxlength="100"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="label label-price" for="valorProduto"
+                  >Valor unitário (R$)</label
+                >
+
+                <input
+                  type="number"
+                  class="form-control"
+                  id="valorProduto"
+                  placeholder="Ex.: 5,99"
+                  min="0"
+                  step="0.01"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="label label-qtd" for="quantidadeProduto"
+                  >Quantidade</label
+                >
+
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <button
+                      type="button"
+                      class="btn btn-outline-secondary"
+                      id="diminuirQtd"
+                    >
+                      −
+                    </button>
+                  </div>
+
+                  <input
+                    type="number"
+                    class="form-control text-center"
+                    id="quantidadeProduto"
+                    value="1"
+                    min="1"
+                    step="1"
+                    required
+                  />
+
+                  <div class="input-group-append">
+                    <button
+                      type="button"
+                      class="btn btn-outline-secondary"
+                      id="aumentarQtd"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-between">
+                <strong>Total do item:</strong>
+
+                <strong id="totalModal">R$ 5,99</strong>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn-cancel" data-dismiss="modal">
+                Cancelar
+              </button>
+
+              <button type="submit" class="btn btn-success">
+                Adicionar produto
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="modalOrcamento"
+      tabindex="-1"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Editar Orçamento</h5>
+          </div>
+
+          <form id="formOrcamento">
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="novoOrcamento">Novo valor (R$)</label>
+
+                <input
+                  type="number"
+                  class="form-control"
+                  id="novoOrcamento"
+                  min="0"
+                  step="0.01"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn-cancel" data-dismiss="modal">
+                Cancelar
+              </button>
+
+              <button type="submit" class="btn btn-success">Salvar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- NOVO MODAL: Editar Produto -->
+
+    <div
+      class="modal fade"
+      id="modalEditarProduto"
+      tabindex="-1"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Editar Produto</h5>
+          </div>
+
+          <form id="formEditarProduto">
+            <div class="modal-body">
+              <div class="form-group">
+                <label class="label label-name" for="editarNomeProduto"
+                  >Nome do produto</label
+                >
+
+                <input
+                  type="text"
+                  class="form-control"
+                  id="editarNomeProduto"
+                  maxlength="100"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="label label-price" for="editarValorProduto"
+                  >Valor unitário (R$)</label
+                >
+
+                <input
+                  type="number"
+                  class="form-control"
+                  id="editarValorProduto"
+                  min="0"
+                  step="0.01"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="label label-qtd" for="editarQuantidadeProduto"
+                  >Quantidade</label
+                >
+
+                <input
+                  type="number"
+                  class="edit-product"
+                  id="editarQuantidadeProduto"
+                  min="1"
+                  step="1"
+                  required
+                />
+              </div>
+
+              <div class="d-flex justify-content-between">
+                <strong>Total do item:</strong>
+
+                <strong id="totalModalEditar">R$ 0,00</strong>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn-cancel" data-dismiss="modal">
+                Cancelar
+              </button>
+
+              <button type="submit" class="btn btn-success">
+                Salvar alterações
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="./script/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+.article-container{
+    width: 80%;
+    margin: auto;
+}
+
+.about-title{
+    text-align: center;
+    padding: 60px;
+    font-weight: 700;
+}
