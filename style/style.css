@@ -6,21 +6,34 @@
 }
 
 body {
-    
     background-color: #f7f9e8;
     font-family: system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
 }
 
+/* Menu */
 
-/* Header / Menu */
 .menu {
     background-color: #8168f1;
     width: 100%;
     padding: 10px 0;
 }
 
+.menu .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.menu h1 {
+    margin: 0;
+}
+
 .logo-totaliza {
     width: 220px;
+    max-width: 100%;
+    height: auto;
     display: block;
 }
 
@@ -29,6 +42,8 @@ body {
     font-size: 1.1rem;
     color: #FFF;
     font-weight: 500;
+    white-space: nowrap;
+    transition: color 0.3s ease;
 }
 
 .quem-somos:hover {
@@ -36,7 +51,7 @@ body {
     text-decoration: none;
 }
 
-/* Corpo e Card Cinza */
+/*  Corpo da lista */
 
 .list-body {
     padding: 50px 0;
@@ -45,21 +60,22 @@ body {
     width: 100%;
 }
 
-/* O quadrado cinza contendo todas as informações */
 .lista-fundo {
     background-color: #d8dedf;
-    padding: 25px 40px 35px 40px;
+    padding: 25px 40px 35px;
     border-radius: 20px;
     width: 100%;
-    max-width: 950px; /* Controla a largura máxima do bloco centralizado */
+    max-width: 950px;
     margin: 0 auto;
 }
 
-/* Seção de Orçamento */
+/* Orçamento */
+
 .orcamento {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 15px;
     margin-bottom: 30px;
 }
@@ -68,6 +84,7 @@ body {
     font-size: 1.3rem;
     font-weight: 600;
     color: #222;
+    margin: 0;
 }
 
 .orcamento-input-group {
@@ -83,6 +100,7 @@ body {
     padding: 8px 25px;
     border-radius: 12px;
     color: #333;
+    white-space: nowrap;
 }
 
 .edit-bg {
@@ -93,16 +111,21 @@ body {
     cursor: pointer;
     display: flex;
     align-items: center;
-    justify-self: center;
+    justify-content: center;
+    flex-shrink: 0;
 }
 
 .edit-icon {
     width: 18px;
+    height: auto;
 }
 
-/* Itens da Lista */
+/* Lista */
+
 .item-lista {
+    justify-self: center;
     margin-bottom: 0;
+    width: 100%;
 }
 
 .produto {
@@ -113,6 +136,7 @@ body {
     font-weight: 500;
     border-radius: 15px;
     font-size: 1.05rem;
+    overflow-wrap: anywhere;
 }
 
 .produto-rotulo {
@@ -128,9 +152,11 @@ body {
     font-weight: 700;
     font-size: 1.3rem;
     margin-bottom: 0;
+    overflow-wrap: anywhere;
 }
 
-/* Controle de Quantidade (+ e -) */
+/* Quantidade */
+
 .controle-quantidade {
     display: flex;
     align-items: center;
@@ -142,6 +168,7 @@ body {
     max-width: 160px;
     margin: 0 auto;
     color: #FFF;
+    gap: 5px;
 }
 
 .qtd-display {
@@ -159,6 +186,7 @@ body {
 
 .input-qtd {
     width: 45px;
+    min-width: 0;
     border: none;
     background: transparent;
     color: #FFF;
@@ -178,24 +206,32 @@ body {
     padding: 0 4px;
     cursor: pointer;
     user-select: none;
+    flex-shrink: 0;
 }
 
 .btn-qtd:hover {
     opacity: 0.8;
 }
 
-/* Linha Divisória */
+.botao-edit{
+    justify-self: center;
+}
+
+/* Linha horizontal */
+
 .divisor {
     border-top: 1px solid #bdc3c7;
     margin: 18px 0;
 }
 
-/* Valor Total da Compra (Rodapé) */
+/* Valor total da Compra */
+
 .total-compra-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
     margin-top: 35px;
 }
 
@@ -203,6 +239,7 @@ body {
     font-size: 1.1rem;
     font-weight: 600;
     color: #222;
+    text-align: center;
 }
 
 .total-badge {
@@ -210,102 +247,121 @@ body {
     color: #FFF;
     font-size: 1.4rem;
     font-weight: 700;
-    padding: 10px 45px;
+    padding: 10px 35px;
     border-radius: 16px;
+    text-align: center;
+    overflow-wrap: anywhere;
 }
 
-.container {
-    display:flex;
-    justify-content: space-between;
+/* Botão Adicionar Produto */
+
+.btn-addProduct {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1000;
 }
 
-.adicionar-produto{
-    position: absolute;
-    right: 30px;
-    bottom: 155px;
-}
-
-.btn-addProduct{
-    position: fixed;        /* Fixa o elemento em relação à janela da tela */
-    bottom: 25px;           /* Distância da parte de baixo da tela */
-    right: 25px;            /* Distância da lateral direita */
-    z-index: 1000;          /* Garante que o botão fique acima dos outros elementos */
-
-}
-
-.botao-adicionar{
+.botao-adicionar {
     font-size: 32px;
     font-weight: 700;
     background-color: #8168f1;
     color: #FFF;
-
     padding: 15px 30px;
     border-radius: 100px;
-
     border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.botao-adicionar:hover{
-    transition: 0.5s;
+.botao-adicionar:hover {
     background-color: #5b3ce6;
-    padding: 25px 40px;
+    transform: scale(1.08);
 }
 
+/* Modal */
 
-.modal-content{
+.modal-content {
     position: relative;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-direction: column;
     flex-direction: column;
     width: 100%;
     pointer-events: auto;
     background-color: #d8dedf;
     background-clip: padding-box;
-    
     border-radius: 25px;
     outline: 0;
+    overflow: hidden;
 }
 
-.label{
+.modal-header,
+.modal-body,
+.modal-footer {
+    padding: 20px;
+}
+
+.modal-title {
     font-weight: 700;
 }
 
-.btn{
+.modal-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.modal-footer button {
+    flex: 1 1 auto;
+}
+
+/*  Botões do Modal */
+
+.label {
+    font-weight: 700;
+}
+
+.btn,
+.btn-cancel {
     display: inline-block;
     font-weight: 400;
     text-align: center;
     vertical-align: middle;
     user-select: none;
+    color: #fff;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 15px;
+    transition: background-color .15s ease-in-out;
+    cursor: pointer;
+}
+
+.btn {
     background-color: #5b3ce6;
-    color: #fff;
-    border: 1px solid transparent;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: 15px;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
-.btn-cancel{
-    display: inline-block;
-    font-weight: 400;
-    text-align: center;
-    vertical-align: middle;
-    user-select: none;
+.btn:hover {
+    background-color: #4628c9;
+    color: #fff;
+}
+
+.btn-cancel {
     background-color: #9c9c9c;
-    color: #fff;
-    border: 1px solid transparent;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: 15px;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
-.form-control {
+.btn-cancel:hover {
+    background-color: #777;
+}
+
+/* Formulário */
+
+.form-control,
+.edit-product {
     display: block;
     width: 100%;
+    min-width: 0;
     height: calc(1.5em + .75rem + 2px);
     padding: .375rem .75rem;
     font-size: 1rem;
@@ -320,20 +376,17 @@ body {
 }
 
 .edit-product {
-    display: block;
-    width: 100%;
-    height: calc(1.5em + .75rem + 2px);
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
     border-radius: 15px;
-    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
+
+.form-control:focus,
+.edit-product:focus {
+    border-color: #8168f1;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(129, 104, 241, 0.2);
+}
+
+/* Alerta do orçamento estourando */
 
 .alerta-orcamento {
     text-align: center;
@@ -341,5 +394,274 @@ body {
     font-weight: 600;
     font-size: 12px;
     margin-top: 10px;
-    padding-left: 225px;
+    padding-left: 215px;
+}
+
+/* Tablets e Celulares até 768px */
+
+@media (max-width: 768px) {
+
+    .list-body {
+        padding: 30px 0;
+    }
+
+    .lista-fundo {
+        padding: 25px 20px 30px;
+    }
+
+    .logo-totaliza {
+        width: 180px;
+    }
+
+    .orcamento-title {
+        font-size: 1.15rem;
+    }
+
+    .budget {
+        font-size: 1rem;
+        padding: 8px 18px;
+    }
+
+    .total-compra-container {
+        gap: 12px;
+    }
+
+    .total-label {
+        font-size: 1rem;
+    }
+
+    .total-badge {
+        font-size: 1.2rem;
+        padding: 10px 25px;
+    }
+
+    .produto {
+        font-size: 0.95rem;
+        padding: 15px 10px;
+    }
+
+    .preco-unitario {
+        font-size: 1.1rem;
+    }
+
+    .controle-quantidade {
+        max-width: 145px;
+        padding: 6px 10px;
+    }
+
+    .btn-addProduct {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .botao-adicionar {
+        font-size: 28px;
+        padding: 12px 25px;
+    }
+
+    .alerta-orcamento {
+        font-size: 11px;
+        padding: 0;
+    }
+}
+
+/* Celulares até 576px */
+
+@media (max-width: 576px) {
+
+    .menu {
+        padding: 12px 0;
+    }
+
+    .menu .container {
+        padding: 0 15px;
+    }
+
+    .logo-totaliza {
+        width: 145px;
+    }
+
+    .quem-somos {
+        font-size: 0.9rem;
+    }
+
+    .list-body {
+        padding: 20px 0;
+    }
+
+    .list-body > .container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .lista-fundo {
+        padding: 20px 12px 25px;
+        border-radius: 15px;
+    }
+
+    .orcamento {
+        gap: 10px;
+        margin-bottom: 25px;
+    }
+
+    .orcamento-title {
+        font-size: 1.05rem;
+    }
+
+    .budget {
+        font-size: 0.95rem;
+        padding: 8px 15px;
+    }
+
+    .edit-bg {
+        padding: 8px;
+    }
+
+    .produto {
+        font-size: 0.9rem;
+        padding: 12px 8px;
+    }
+
+    .produto-rotulo {
+        font-size: 0.85rem;
+    }
+
+    .preco-unitario {
+        font-size: 1rem;
+    }
+
+    .controle-quantidade {
+        max-width: 130px;
+        padding: 5px 8px;
+    }
+
+    .input-qtd {
+        font-size: 1rem;
+        width: 35px;
+    }
+
+    .btn-qtd {
+        font-size: 1.5rem;
+    }
+
+    .qtd-label {
+        font-size: 0.65rem;
+    }
+
+    .total-compra-container {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 25px;
+    }
+
+    .total-label {
+        font-size: 0.95rem;
+    }
+
+    .total-badge {
+        width: 100%;
+        font-size: 1.2rem;
+        padding: 10px 15px;
+    }
+
+    .btn-addProduct {
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .botao-adicionar {
+        font-size: 26px;
+        padding: 10px 22px;
+    }
+
+
+    .modal-dialog {
+        width: auto;
+        max-width: none;
+        margin: 10px;
+    }
+
+    .modal-content {
+        border-radius: 18px;
+    }
+
+    .modal-header,
+    .modal-body,
+    .modal-footer {
+        padding: 15px;
+    }
+
+    .modal-title {
+        font-size: 1.1rem;
+    }
+
+    .modal-footer {
+        gap: 8px;
+    }
+
+    .modal-footer button {
+        font-size: 0.9rem;
+    }
+
+    .alerta-orcamento {
+        font-size: 11px;
+        padding: 0;
+    }
+}
+
+/* Celulares até 360p*/
+
+@media (max-width: 360px) {
+
+    .logo-totaliza {
+        width: 125px;
+    }
+
+    .quem-somos {
+        font-size: 0.8rem;
+    }
+
+    .lista-fundo {
+        padding: 15px 8px 20px;
+    }
+
+    .orcamento-title {
+        font-size: 0.95rem;
+    }
+
+    .budget {
+        font-size: 0.85rem;
+        padding: 7px 10px;
+    }
+
+    .botao-adicionar {
+        font-size: 23px;
+        padding: 9px 19px;
+    }
+
+    .modal-footer {
+        flex-direction: column;
+    }
+
+    .modal-footer button {
+        width: 100%;
+    }
+
+    .alerta-orcamento {
+        font-size: 11px;
+        padding: 0;
+    }
+}
+
+/* Acessibilidade */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }

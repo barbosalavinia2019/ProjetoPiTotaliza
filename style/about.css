@@ -1,83 +1,242 @@
+
+/* Gerais */
+
+* {
+    box-sizing: border-box;
+}
+
+.article-container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.menu .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 75px;
+    gap: 20px;
+}
+
+.menu h1 {
+    margin: 0;
+}
+
+.logo-totaliza {
+    display: block;
+    width: 180px;
+    max-width: 100%;
+    height: auto;
+}
+
 .calculadora {
     text-decoration: none;
     font-size: 1.1rem;
     color: #FFF;
     font-weight: 500;
+    transition: color 0.3s ease;
 }
 
 .calculadora:hover {
-    transition: .5s;
     color: #e0e0e0;
     text-decoration: none;
 }
 
-.article-container{
-    width: 80%;
-    margin: auto;
-}
+/* Quem somos*/
 
-.about-title{
+.about-title {
     color: #1E1E1E;
     text-align: center;
-    padding: 60px;
+    padding: 40px 10px;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
     font-weight: 700;
 }
 
-.about-text{
+.about-text {
     color: #1E1E1E;
-    font-size: 16pt;
+    font-size: 1.1rem;
+    line-height: 1.8;
     padding: 20px;
+    text-align: justify;
 }
 
-.dev-title{
-    padding: 40px;
+/* DEVs */
+
+.dev-section {
+    width: 100%;
+    padding: 20px 0 50px;
+}
+
+.dev-title {
+    padding: 30px 10px;
     color: #1E1E1E;
-    font-size: 24pt;
+    font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 700;
     text-align: center;
 }
 
-.dev-section ul li{
+.dev-section ul {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 0 20px;
+    margin: 0 auto;
+    max-width: 1100px;
+}
+
+.dev-section ul li {
     list-style: none;
 }
 
-.dev-section ul{
-    padding: 0 120px;
-}
-
-.dev-card{
-    padding: 40px;
+.dev-card {
+    width: 220px;
+    padding: 30px 20px;
     border-radius: 15px;
+    text-align: center;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
-    will-change: transform;
-}
-
-.dev-card:hover{
-    transform: scale(1.08); 
-}
-
-.dev-card:hover img{
-    transform: scale(1.10);
-    border: 4px solid #8168F1;
-    border-radius: 100%;
-}
-
-.dev-card:hover .dev-name{
-    color: #8168F1;
-    transition: .5s;
 }
 
 .dev-card a {
     text-decoration: none;
+    display: block;
 }
 
-.dev img{
+.dev img {
     width: 164px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+    transition: transform 0.4s ease, border 0.4s ease;
 }
 
-.dev-name{
+.dev-name {
     text-align: center;
     color: #1E1E1E;
-    padding-top: 60px;
+    padding-top: 25px;
     font-weight: 700;
+    font-size: 1.1rem;
+    transition: color 0.4s ease;
+}
+
+/* Efeitos de Hover - Card de DEV */
+
+.dev-card:hover {
+    transform: translateY(-5px);
+}
+
+.dev-card:hover img {
+    transform: scale(1.08);
+    border: 4px solid #8168F1;
+}
+
+.dev-card:hover .dev-name {
+    color: #8168F1;
+}
+
+/* Tablet */
+
+@media (max-width: 768px) {
+
+    .article-container {
+        padding: 0 15px;
+    }
+
+    .about-title {
+        padding: 30px 10px;
+    }
+
+    .about-text {
+        font-size: 1rem;
+        padding: 10px;
+        line-height: 1.7;
+    }
+
+    .dev-section ul {
+        gap: 15px;
+    }
+
+    .dev-card {
+        width: 190px;
+        padding: 20px 10px;
+    }
+
+    .dev img {
+        width: 140px;
+    }
+}
+
+/* Responsivo */
+
+@media (max-width: 480px) {
+
+    .menu .container {
+        min-height: 65px;
+        padding: 10px 15px;
+        gap: 10px;
+    }
+
+    .logo-totaliza {
+        width: 135px;
+    }
+
+    .calculadora {
+        font-size: 0.95rem;
+    }
+
+    .article-container {
+        padding: 0 10px;
+    }
+
+    .about-title {
+        padding: 25px 5px;
+    }
+
+    .about-text {
+        font-size: 0.95rem;
+        padding: 10px 5px;
+        text-align: left;
+        line-height: 1.7;
+        text-align: center;
+    }
+
+    .dev-title {
+        padding: 25px 10px;
+    }
+
+    .dev-section ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 0 10px;
+    }
+
+    .dev-card {
+        width: 100%;
+        max-width: 250px;
+        padding: 20px;
+    }
+
+    .dev img {
+        width: 130px;
+    }
+
+    .dev-name {
+        padding-top: 15px;
+        font-size: 1rem;
+    }
+}
+
+/* Acessibilidade*/
+
+@media (prefers-reduced-motion: reduce) {
+    .dev-card,
+    .dev img,
+    .dev-name,
+    .calculadora {
+        transition: none;
+    }
 }
