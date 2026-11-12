@@ -1,10 +1,83 @@
+.calculadora {
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: #FFF;
+    font-weight: 500;
+}
+
+.calculadora:hover {
+    transition: .5s;
+    color: #e0e0e0;
+    text-decoration: none;
+}
+
 .article-container{
     width: 80%;
     margin: auto;
 }
 
 .about-title{
+    color: #1E1E1E;
     text-align: center;
     padding: 60px;
+    font-weight: 700;
+}
+
+.about-text{
+    color: #1E1E1E;
+    font-size: 16pt;
+    padding: 20px;
+}
+
+.dev-title{
+    padding: 40px;
+    color: #1E1E1E;
+    font-size: 24pt;
+    font-weight: 700;
+    text-align: center;
+}
+
+.dev-section ul li{
+    list-style: none;
+}
+
+.dev-section ul{
+    padding: 0 120px;
+}
+
+.dev-card{
+    padding: 40px;
+    border-radius: 15px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    will-change: transform;
+}
+
+.dev-card:hover{
+    transform: scale(1.08); 
+}
+
+.dev-card:hover img{
+    transform: scale(1.10);
+    border: 4px solid #8168F1;
+    border-radius: 100%;
+}
+
+.dev-card:hover .dev-name{
+    color: #8168F1;
+    transition: .5s;
+}
+
+.dev-card a {
+    text-decoration: none;
+}
+
+.dev img{
+    width: 164px;
+}
+
+.dev-name{
+    text-align: center;
+    color: #1E1E1E;
+    padding-top: 60px;
     font-weight: 700;
 }

@@ -6,6 +6,7 @@
 }
 
 body {
+    
     background-color: #f7f9e8;
     font-family: system-ui, -apple-system, sans-serif;
 }
@@ -225,9 +226,11 @@ body {
 }
 
 .btn-addProduct{
-    justify-self: right;
-    padding-right: 2rem;
-    padding-bottom: 2rem;
+    position: fixed;        /* Fixa o elemento em relação à janela da tela */
+    bottom: 25px;           /* Distância da parte de baixo da tela */
+    right: 25px;            /* Distância da lateral direita */
+    z-index: 1000;          /* Garante que o botão fique acima dos outros elementos */
+
 }
 
 .botao-adicionar{
