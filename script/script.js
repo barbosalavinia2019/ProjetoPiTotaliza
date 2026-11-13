@@ -217,11 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     class="botao-erase edit-bg btn-excluir-item"
                     title="Excluir"
                 >
-                    <img
-                        src="./images/icons/trash-can.png"
-                        alt="Excluir"
-                        class="erase-icon"
-                    >
+                    <img src="./images/icons/trash-can.png" alt="Excluir" class="erase-icon">
                 </button>
             </div>
         `;
