@@ -218,7 +218,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     title="Excluir"
                 >
                     <img
-                        src="../images/icons/trash-can.png"
+                        src="./images/icons/trash-can.png"
                         alt="Excluir"
                         class="erase-icon"
                     >
