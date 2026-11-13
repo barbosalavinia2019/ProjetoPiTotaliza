@@ -1,4 +1,7 @@
+
 document.addEventListener("DOMContentLoaded", () => {
+
+    /* Elementos do produto */
 
     const form = document.getElementById("formProduto");
     const nomeInput = document.getElementById("nomeProduto");
@@ -7,12 +10,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const totalModal = document.getElementById("totalModal");
     const totalCarrinho = document.getElementById("totalCarrinho");
 
+    /* Elementos do orçamento */
+
     const btnEditarOrcamento = document.querySelector(".edit-bg");
     const spanOrcamentoValor = document.getElementById("orcamento-valor");
     const formOrcamento = document.getElementById("formOrcamento");
     const inputNovoOrcamento = document.getElementById("novoOrcamento");
 
+    /* Elementos de edição */
+
     let linhaEmEdicao = null;
+    let linhaParaExcluir = null;
 
     const formEditar = document.getElementById("formEditarProduto");
     const editarNomeInput = document.getElementById("editarNomeProduto");
@@ -20,8 +28,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const editarQuantidadeInput = document.getElementById("editarQuantidadeProduto");
     const totalModalEditar = document.getElementById("totalModalEditar");
 
+    /* Elementos de exclusão */
 
-    // Formatação de moeda
+    const btnConfirmarExclusao = document.getElementById("btnConfirmarExclusao");
+    const textoConfirmacaoExclusao = document.getElementById("textoConfirmacaoExclusao");
+
+    /* Formatação de moeda */
+
     const formatarMoeda = (valor) => {
         return valor.toLocaleString("pt-BR", {
             style: "currency",
@@ -29,15 +42,23 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
-    // PERSISTÊNCIA DE DADOS
+    /* Conversão de moeda */
+
+    const converterMoeda = (texto) => {
+        return Number(
+            texto
+                .replace(/[^\d,]/g, "")
+                .replace(",", ".")
+        ) || 0;
+    };
+
+    /* Persistência de dados */
 
     function salvarDados() {
-
         const orcamento = spanOrcamentoValor.textContent;
         const itens = [];
 
         document.querySelectorAll(".item-lista").forEach(linha => {
-
             itens.push({
                 nome: linha.querySelector(".produto").textContent,
                 preco: Number(linha.dataset.preco) || 0,
@@ -45,17 +66,15 @@ document.addEventListener("DOMContentLoaded", () => {
                     linha.querySelector(".input-qtd").value.replace(/[^\d]/g, "")
                 ) || 1
             });
-
         });
 
         localStorage.setItem("totaliza_orcamento", orcamento);
         localStorage.setItem("totaliza_itens", JSON.stringify(itens));
-
     }
 
+    /* Carregamento de dados */
 
     function carregarDados() {
-
         const orcamentoSalvo = localStorage.getItem("totaliza_orcamento");
 
         if (orcamentoSalvo) {
@@ -65,71 +84,56 @@ document.addEventListener("DOMContentLoaded", () => {
         const itensSalvos = localStorage.getItem("totaliza_itens");
 
         if (itensSalvos) {
-
             try {
-
                 JSON.parse(itensSalvos).forEach(item => {
                     criarLinha(item.nome, item.preco, item.qtd, false);
                 });
-
             } catch (e) {
-
                 console.error("Erro ao carregar dados salvos:", e);
-
             }
-
         }
 
         atualizarTotais();
-
     }
 
-    // VERIFICAÇÃO DO ORÇAMENTO
+    /* Verificação do orçamento */
 
     function verificarOrcamento() {
-
-        const valorOrcamento = Number(
+        const valorOrcamento = converterMoeda(
             spanOrcamentoValor.textContent
-                .replace(/[^\d,]/g, "")
-                .replace(",", ".")
-        ) || 0;
+        );
 
-        const valorCarrinho = Number(
+        const valorCarrinho = converterMoeda(
             totalCarrinho.textContent
-                .replace(/[^\d,]/g, "")
-                .replace(",", ".")
-        ) || 0;
+        );
 
         const mensagemEstouro = document.getElementById("mensagemEstouro");
 
-        if (valorCarrinho > valorOrcamento) {
+        const orcamentoEstourado =
+            valorOrcamento > 0 &&
+            valorCarrinho > valorOrcamento;
 
+        if (orcamentoEstourado) {
             totalCarrinho.style.backgroundColor = "#ff0000";
 
             if (mensagemEstouro) {
                 mensagemEstouro.style.display = "block";
             }
-
         } else {
-
             totalCarrinho.style.backgroundColor = "#11b30b";
 
             if (mensagemEstouro) {
                 mensagemEstouro.style.display = "none";
             }
-
         }
-
     }
 
-    // ATUALIZAÇÃO DOS TOTAIS
+    /* Atualização dos totais */
 
     function atualizarTotais() {
-
         let totalGeral = 0;
 
         document.querySelectorAll(".item-lista").forEach(linha => {
-
             const preco = Number(linha.dataset.preco) || 0;
 
             const qtd = Number(
@@ -142,19 +146,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 formatarMoeda(totalItem);
 
             totalGeral += totalItem;
-
         });
 
         totalCarrinho.textContent = formatarMoeda(totalGeral);
 
         verificarOrcamento();
-
     }
 
-    // CRIAÇÃO DE PRODUTOS
+    /* Criação de produtos */
 
     function criarLinha(nome, preco, quantidade, deveSalvar = true) {
-
         const linha = document.createElement("div");
 
         linha.className = "row item-lista align-items-center";
@@ -172,16 +173,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
             <div class="col-md-3 text-center">
                 <div class="controle-quantidade">
-
                     <button type="button" class="btn-qtd btn-menos">−</button>
 
                     <div class="qtd-display">
                         <span class="qtd-label">QTD: </span>
-                        <input type="text" class="input-qtd" value="${quantidade}x" readonly>
+                        <input
+                            type="text"
+                            class="input-qtd"
+                            value="${quantidade}x"
+                            readonly
+                        >
                     </div>
 
                     <button type="button" class="btn-qtd btn-mais">+</button>
-
                 </div>
             </div>
 
@@ -192,84 +196,89 @@ document.addEventListener("DOMContentLoaded", () => {
                 </span>
             </div>
 
-            <div class="col-md-2 text-center">
-                <button type="button" class="botao-edit edit-bg btn-editar-item">
-                    <img src="./images/edit.png" alt="Editar" class="edit-icon">
+            <div
+                class="col-md-2 text-center d-flex justify-content-center align-items-center"
+                style="gap: 8px;"
+            >
+                <button
+                    type="button"
+                    class="botao-edit edit-bg btn-editar-item"
+                    title="Editar"
+                >
+                    <img
+                        src="./images/edit.png"
+                        alt="Editar"
+                        class="edit-icon"
+                    >
+                </button>
+
+                <button
+                    type="button"
+                    class="botao-erase edit-bg btn-excluir-item"
+                    title="Excluir"
+                >
+                    <img
+                        src="../images/icons/trash-can.png"
+                        alt="Excluir"
+                        class="erase-icon"
+                    >
                 </button>
             </div>
         `;
 
-
-        // Cria o HR
         const divisor = document.createElement("hr");
         divisor.className = "divisor";
 
-        // Localiza o container do total
-        const containerTotal = document.querySelector(".total-compra-container");
+        const containerTotal = document.querySelector(
+            ".total-compra-container"
+        );
 
-        // Insere o produto antes do total da compra
         containerTotal.parentNode.insertBefore(linha, containerTotal);
 
-        // Insere o HR imediatamente abaixo do produto
         linha.after(divisor);
 
-
         if (deveSalvar) {
-
             atualizarTotais();
             salvarDados();
-
         }
-
     }
 
-    // PROTEÇÃO DO NOME DO PRODUTO
+    /* Proteção do nome do produto */
 
     function escapeHtml(str) {
-
         return str.replace(/[&<>'"]/g, tag => ({
-            '&': '&amp;',
-            '<': '&lt;',
-            '>': '&gt;',
-            "'": '&#39;',
-            '"': '&quot;'
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            "'": "&#39;",
+            '"': "&quot;"
         }[tag] || tag));
-
     }
 
-    // EDIÇÃO DO ORÇAMENTO
+    /* Edição do orçamento */
 
     if (btnEditarOrcamento) {
-
         btnEditarOrcamento.addEventListener("click", () => {
-
-            const valorAtual = Number(
+            const valorAtual = converterMoeda(
                 spanOrcamentoValor.textContent
-                    .replace(/[^\d,]/g, "")
-                    .replace(",", ".")
-            ) || 0;
+            );
 
             inputNovoOrcamento.value = valorAtual.toFixed(2);
 
             if (window.jQuery) {
                 $("#modalOrcamento").modal("show");
             }
-
         });
-
     }
 
-
     if (formOrcamento) {
-
         formOrcamento.addEventListener("submit", (e) => {
-
             e.preventDefault();
 
             const novoValor = Number(inputNovoOrcamento.value);
 
-            if (novoValor < 0) {
-                return alert("O orçamento não pode ser negativo.");
+            if (!Number.isFinite(novoValor) || novoValor < 0) {
+                return alert("Informe um orçamento válido e não negativo.");
             }
 
             spanOrcamentoValor.textContent = formatarMoeda(novoValor);
@@ -280,22 +289,17 @@ document.addEventListener("DOMContentLoaded", () => {
             if (window.jQuery) {
                 $("#modalOrcamento").modal("hide");
             }
-
         });
-
     }
 
-    // ATUALIZAÇÃO DOS TOTAIS DOS MODAIS
+    /* Atualização dos totais dos modais */
 
     const atualizarTotalModal = (valInput, qtdInput, targetEl) => {
-
         const preco = Number(valInput.value) || 0;
         const qtd = Number(qtdInput.value) || 1;
 
         targetEl.textContent = formatarMoeda(preco * qtd);
-
     };
-
 
     valorInput.addEventListener("input", () => {
         atualizarTotalModal(valorInput, quantidadeInput, totalModal);
@@ -305,79 +309,85 @@ document.addEventListener("DOMContentLoaded", () => {
         atualizarTotalModal(valorInput, quantidadeInput, totalModal);
     });
 
+    /* Diminuir quantidade no modal */
 
-    // Diminuir quantidade no modal
     document.getElementById("diminuirQtd").addEventListener("click", () => {
-
         if (quantidadeInput.value > 1) {
-
             quantidadeInput.value--;
 
-            atualizarTotalModal(valorInput, quantidadeInput, totalModal);
-
+            atualizarTotalModal(
+                valorInput,
+                quantidadeInput,
+                totalModal
+            );
         }
-
     });
 
+    /* Aumentar quantidade no modal */
 
-    // Aumentar quantidade no modal
     document.getElementById("aumentarQtd").addEventListener("click", () => {
-
         quantidadeInput.value++;
 
-        atualizarTotalModal(valorInput, quantidadeInput, totalModal);
-
+        atualizarTotalModal(
+            valorInput,
+            quantidadeInput,
+            totalModal
+        );
     });
 
+    /* Atualização do modal de edição */
 
     if (editarValorInput && editarQuantidadeInput) {
-
         editarValorInput.addEventListener("input", () => {
-            atualizarTotalModal(editarValorInput, editarQuantidadeInput, totalModalEditar);
+            atualizarTotalModal(
+                editarValorInput,
+                editarQuantidadeInput,
+                totalModalEditar
+            );
         });
 
         editarQuantidadeInput.addEventListener("input", () => {
-            atualizarTotalModal(editarValorInput, editarQuantidadeInput, totalModalEditar);
+            atualizarTotalModal(
+                editarValorInput,
+                editarQuantidadeInput,
+                totalModalEditar
+            );
         });
-
     }
 
-    // CADASTRO DE PRODUTO NOVO
-
+    /* Cadastro de produto novo */
 
     form.addEventListener("submit", (e) => {
-
         e.preventDefault();
 
         const nome = nomeInput.value.trim();
         const preco = Number(valorInput.value);
         const qtd = Number(quantidadeInput.value);
 
-        if (!nome || preco <= 0 || qtd < 1) {
+        if (!nome || !Number.isFinite(preco) || preco <= 0 || !Number.isInteger(qtd) || qtd < 1) {
             return alert("Preencha os campos corretamente.");
         }
 
         criarLinha(nome, preco, qtd, true);
 
         form.reset();
-
         quantidadeInput.value = 1;
 
-        atualizarTotalModal(valorInput, quantidadeInput, totalModal);
+        atualizarTotalModal(
+            valorInput,
+            quantidadeInput,
+            totalModal
+        );
 
         if (window.jQuery) {
             $("#modalProduto").modal("hide");
         }
-
     });
 
-    // EDIÇÃO DE PRODUTO EXISTENTE
-
+    /* Edição de produto existente */
 
     if (formEditar) {
-
         formEditar.addEventListener("submit", (e) => {
-
             e.preventDefault();
 
             if (!linhaEmEdicao) return;
@@ -386,7 +396,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const preco = Number(editarValorInput.value);
             const qtd = Number(editarQuantidadeInput.value);
 
-            if (!nome || preco <= 0 || qtd < 1) {
+            if (!nome || !Number.isFinite(preco) || preco <= 0 || !Number.isInteger(qtd) || qtd < 1) {
                 return alert("Preencha os campos corretamente.");
             }
 
@@ -405,37 +415,83 @@ document.addEventListener("DOMContentLoaded", () => {
             if (window.jQuery) {
                 $("#modalEditarProduto").modal("hide");
             }
-
         });
-
     }
 
+    /* Confirmação de exclusão */
 
+    if (btnConfirmarExclusao) {
+        btnConfirmarExclusao.addEventListener("click", () => {
+            if (!linhaParaExcluir) return;
 
-    // CLIQUES: AUMENTAR, DIMINUIR E EDITAR
+            const divisor = linhaParaExcluir.nextElementSibling;
 
+            if (divisor && divisor.classList.contains("divisor")) {
+                divisor.remove();
+            }
+
+            linhaParaExcluir.remove();
+
+            atualizarTotais();
+            salvarDados();
+
+            if (window.jQuery) {
+                $("#modalConfirmarExclusao").modal("hide");
+            }
+
+            linhaParaExcluir = null;
+        });
+    }
+
+    /* Cliques globais */
 
     document.addEventListener("click", (e) => {
 
-        // EDITAR PRODUTO
+        /* Excluir produto */
+
+        const btnExcluir = e.target.closest(".btn-excluir-item");
+
+        if (btnExcluir) {
+            linhaParaExcluir = btnExcluir.closest(".item-lista");
+
+            if (!linhaParaExcluir) return;
+
+            const nomeProduto = linhaParaExcluir.querySelector(
+                ".produto"
+            ).textContent;
+
+            if (textoConfirmacaoExclusao) {
+                textoConfirmacaoExclusao.textContent =
+                    `Deseja realmente excluir "${nomeProduto}" da sua lista?`;
+            }
+
+            if (window.jQuery) {
+                $("#modalConfirmarExclusao").modal("show");
+            }
+
+            return;
+        }
+
+        /* Editar produto */
+
         const btnEditar = e.target.closest(".btn-editar-item");
 
         if (btnEditar) {
-
             linhaEmEdicao = btnEditar.closest(".item-lista");
 
             if (!linhaEmEdicao) return;
 
-            editarNomeInput.value =
-                linhaEmEdicao.querySelector(".produto").textContent;
+            editarNomeInput.value = linhaEmEdicao.querySelector(
+                ".produto"
+            ).textContent;
 
-            editarValorInput.value =
-                Number(linhaEmEdicao.dataset.preco).toFixed(2);
+            editarValorInput.value = Number(
+                linhaEmEdicao.dataset.preco
+            ).toFixed(2);
 
-            editarQuantidadeInput.value =
-                Number(
-                    linhaEmEdicao.querySelector(".input-qtd").value.replace(/[^\d]/g, "")
-                ) || 1;
+            editarQuantidadeInput.value = Number(
+                linhaEmEdicao.querySelector(".input-qtd").value.replace(/[^\d]/g, "")
+            ) || 1;
 
             atualizarTotalModal(
                 editarValorInput,
@@ -448,11 +504,10 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             return;
-
         }
 
+        /* Aumentar ou diminuir quantidade */
 
-        // AUMENTAR OU DIMINUIR QUANTIDADE
         const btnQtd = e.target.closest(".btn-menos, .btn-mais");
 
         if (!btnQtd) return;
@@ -465,18 +520,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let qtd = parseInt(inputQtd.value) || 1;
 
-
         if (btnQtd.classList.contains("btn-mais")) {
-
             qtd++;
-
         } else {
-
             qtd--;
 
-            // REMOVER PRODUTO QUANDO A QUANTIDADE CHEGAR A ZERO
             if (qtd <= 0) {
-
                 const divisor = linha.nextElementSibling;
 
                 if (divisor && divisor.classList.contains("divisor")) {
@@ -489,30 +538,26 @@ document.addEventListener("DOMContentLoaded", () => {
                 salvarDados();
 
                 return;
-
             }
-
         }
-
 
         inputQtd.value = qtd + "x";
 
         atualizarTotais();
         salvarDados();
-
     });
 
-
-    // INICIALIZAÇÃO
-
+    /* Inicialização */
 
     carregarDados();
 
-    atualizarTotalModal(valorInput, quantidadeInput, totalModal);
-
+    atualizarTotalModal(
+        valorInput,
+        quantidadeInput,
+        totalModal
+    );
 
     if (window.jQuery) {
-
         $("#modalProduto").on("shown.bs.modal", () => {
             nomeInput.focus();
         });
@@ -520,7 +565,6 @@ document.addEventListener("DOMContentLoaded", () => {
         $("#modalOrcamento").on("shown.bs.modal", () => {
             inputNovoOrcamento.focus();
         });
-
     }
 
 });
