@@ -1,0 +1,112 @@
+.compra-consciente{
+    font-size: 24px;
+    width: 964px;
+    text-align: center;
+    margin: auto;
+    padding: 100px 0 60px;
+
+    font-weight: 700;
+
+}
+
+.totaliza-poupar{
+    justify-self: center;
+    display: block;
+    padding-bottom: 20px;
+}
+
+.sobre-totaliza{
+    width: 889px;
+    justify-self: center;
+    display: block;
+    padding-bottom: 70px;
+}
+
+.bg-card-economia{
+    background-color: #8F6BF3;
+    width: 100%;
+}
+
+.bg-card-economia .economia-list{
+    display: flex;
+    justify-content: space-around;
+    padding: 50px 0 30px;
+    color: #F7F9E8;
+}
+
+.bg-card-economia .economia-list .economia-list-item{
+    background-color: #6849BA;
+    padding: 45px;
+    border-radius: 25px;
+    justify-items: center;
+    list-style: none;
+    width: 265px;
+}
+
+.bg-card-economia .economia-list li img{
+    display: block;
+}
+
+.img-cart{
+    width: 66px;
+    padding-bottom: 27px;
+}
+
+.img-money{
+    width: 60px;
+    color: #fff;
+    padding-bottom: 16px;
+}
+
+.img-wallet{
+    width: 66px;
+    padding-bottom: 21px;
+}
+
+.span-icon{
+    font-size: 32px;
+    text-align: center;
+    display: block;
+    font-weight: 700;
+    padding-bottom: 20px;
+}
+
+.icon-text{
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.secondary-list{
+    width: 889px;
+    padding-bottom: 50px;
+    color: #F7F9E8;
+    font-size: 16px;
+    font-weight: 00;
+}
+
+.footer-text{
+    margin: auto;
+    text-align: center;
+    width: 744px;
+}
+
+.section-alerta-desperdicio{
+    padding: 50px;
+}
+
+/* Conteúdo fluido e cards adaptáveis */
+.compra-consciente { width: 100%; max-width: 964px; padding: clamp(40px, 8vw, 100px) 0 40px; font-size: clamp(1.25rem, 3vw, 1.5rem); }
+.sobre-totaliza { width: 100%; max-width: 889px; margin-inline: auto; padding-bottom: 45px; }
+.bg-card-economia .economia-list { flex-wrap: wrap; gap: 20px; padding-inline: 15px; }
+.bg-card-economia .economia-list .economia-list-item { flex: 1 1 220px; max-width: 350px; width: auto; padding: 30px; }
+.secondary-list { width: min(100% - 32px, 889px); margin-inline: auto; padding-left: 24px; }
+.footer-text { width: 100%; max-width: 744px; }
+@media (max-width: 768px) {
+ .bg-card-economia .economia-list { justify-content: center; }
+ .section-alerta-desperdicio { padding: 35px 0; }
+ .footer-text { text-align: left; }
+}
+@media (max-width: 480px) {
+ .bg-card-economia .economia-list .economia-list-item { flex-basis: 100%; max-width: 100%; }
+ .sobre-totaliza { padding-bottom: 30px; }
+}

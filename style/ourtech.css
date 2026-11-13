@@ -1,0 +1,263 @@
+/* Página Nossa Tecnologia — Totaliza */
+
+/* Imagem principal */
+.container-img {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 0 24px;
+    box-sizing: border-box;
+}
+
+.hero {
+    width: 100%;
+    max-width: 1100px;
+    padding-top: 50px;
+}
+
+.hero img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* Textos */
+article {
+    text-align: center;
+}
+
+.hero-title {
+    padding-top: 80px;
+    padding-bottom: 10px;
+    font-weight: 700;
+}
+
+.span-title {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 24px;
+    padding-bottom: 24px;
+    color: #F7F9E8;
+}
+
+.what-text {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 20px 16px 50px;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+/* Seção de tecnologia */
+.our-tech {
+    padding: 50px 24px;
+    background-color: #8F6BF3;
+}
+
+.tech-itens {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    padding: 30px 0 0;
+    margin-bottom: 0;
+}
+
+.tech-itens li {
+    min-width: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+    background-color: #6849BA;
+    padding: 36px 24px 20px;
+    border-radius: 32px;
+    color: #F7F9E8;
+    transition: transform 0.3s ease;
+}
+
+.tech-itens img {
+    display: block;
+    width: 60px;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto 20px;
+}
+
+.span-icon {
+    font-weight: 700;
+}
+
+.icon-text {
+    padding-top: 16px;
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+.how-works {
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+    padding-top: 40px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.7;
+    color: #F7F9E8;
+}
+
+/* Navegação: permite quebra de linha sem criar rolagem horizontal */
+.menu .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+}
+
+.menu .container > a {
+    flex: 0 0 auto;
+}
+
+.menu .container h1 {
+    margin: 0;
+}
+
+.nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+}
+
+/* Efeitos apenas em dispositivos que possuem hover */
+@media (hover: hover) and (pointer: fine) {
+    .hero img:hover {
+        transform: scale(1.025);
+        box-shadow: rgba(99, 99, 99, 0.35) 0 2px 8px;
+    }
+
+    .tech-itens li:hover {
+        transform: translateY(-5px);
+    }
+}
+
+/* Tablets */
+@media (max-width: 991.98px) {
+    .menu .container {
+        justify-content: center;
+    }
+
+    .nav-bar {
+        flex: 1 1 100%;
+    }
+
+    .tech-itens {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .hero-title {
+        padding-top: 56px;
+    }
+}
+
+/* Celulares */
+@media (max-width: 767.98px) {
+    .container-img {
+        padding: 0 16px;
+    }
+
+    .hero {
+        padding-top: 24px;
+    }
+
+    .hero img {
+        border-radius: 14px;
+    }
+
+    .hero-title {
+        padding-top: 40px;
+        font-size: clamp(24px, 6vw, 32px);
+    }
+
+    .span-title {
+        font-size: 20px;
+        padding-bottom: 16px;
+    }
+
+    .what-text {
+        padding: 16px 8px 36px;
+        font-size: 15px;
+    }
+
+    .our-tech {
+        padding: 36px 16px;
+    }
+
+    .tech-itens {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding-top: 20px;
+    }
+
+    .tech-itens li {
+        padding: 28px 20px 18px;
+        border-radius: 24px;
+    }
+
+    .tech-itens img {
+        width: 52px;
+        margin-bottom: 14px;
+    }
+
+    .icon-text {
+        padding-top: 10px;
+    }
+
+    .how-works {
+        padding-top: 28px;
+        font-size: 15px;
+    }
+
+    .nav-bar {
+        gap: 10px 14px;
+        padding: 8px 0 12px;
+    }
+
+    .nav-bar a {
+        font-size: 14px;
+    }
+}
+
+/* Celulares estreitos */
+@media (max-width: 380px) {
+    .container-img {
+        padding: 0 12px;
+    }
+
+    .our-tech {
+        padding-right: 12px;
+        padding-left: 12px;
+    }
+
+    .span-title {
+        font-size: 18px;
+    }
+
+    .nav-bar {
+        gap: 8px 10px;
+    }
+
+    .nav-bar a {
+        font-size: 13px;
+    }
+}
+
+/* Evita animações excessivas para quem prefere movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+    .hero img,
+    .tech-itens li {
+        transition: none;
+    }
+}

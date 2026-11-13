@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../style/style.css" />
+    <link rel="stylesheet" href="../style/help.css" />
+    <link rel="stylesheet" href="../style/navbar.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Central de Ajuda</title>
+  </head>
+  <body>
+    <div class="menu">
+      <div class="container align-items-center">
+        <a href="../index.html">
+          <h1>
+            <img
+              src="../images/Totaliza-logo-white.svg"
+              alt="Totaliza Logo"
+              class="logo-totaliza"
+            />
+          </h1>
+        </a>
+        <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span></button>
+        <nav class="nav-bar">
+          <a class="quem-somos" href="../index.html">Calculadora</a>
+          <a class="quem-somos" href="../pages/ourtech.html">Nossa Tecnologia</a>
+          <a class="quem-somos" href="../pages/desperdicio.html">Desperdicio Zero</a>
+          <a class="quem-somos" href="../pages/economia.html">Economia Domestica</a>
+          <a class="quem-somos" href="../pages/help.html">Central de ajuda</a>
+          <a class="quem-somos" href="../pages/aboutus.html">Quem Somos?</a>
+        </nav>
+      </div>
+    </div>
+
+    <article class="container">
+      <h2>Como utilizar o Totaliza?</h2>
+      <div class="tutorial-list">
+        <ul>
+          <li>
+            <p class="main-text">
+              01 - Para utilizar o Totaliza comece por adicionar o orçamento do qual
+              planeja gastar no campo de orçamento, clicando no lápiz:
+            </p>
+            <img src="../images/tutorial/orcamento-tutorial.png" alt="seção orçamento" class="img-budget" />
+            <p class="text-support">
+              Após clicar aparecerá uma tela pedindo o valor total do orçamento.
+            </p>
+          </li>
+          <hr>
+          <li>
+            <p class="main-text">
+              02 - O Próximo passo é começar a adicionar os produtos dos quais deseja
+              comprar no mercado utilizando o botão de 
+              <img
+                src="../images/tutorial/tutorial-adicionar.png"
+                alt="botao adiocionar"
+                class="tutorial-add"
+              />
+              (o circulo com um sinal de +)
+            </p>
+          </li>
+          <hr>
+          <li>
+            <p class="main-text">
+             03 - Ao clicar em adicionar produtos o site abrirá uma tela te pedindo
+              3 informações importantes, sendo elas: Nome do produto, valor
+              unitário e quantidade. Preencha todos os campos para conseguir
+              adicionar o produto com sucesso.
+            </p>
+            <img src="../images/tutorial/produto-adicionar.png" alt="tela adicionar produto" class="img-adicionar"/>
+          </li>
+          <hr>
+          <li>
+            <p class="main-text">
+              04 - Depois de adicionado os itens na lista, o valor deverá ser
+              calculado de forma automática usando de base o valor e quantidade
+              de cada produto adicionado.
+            </p>
+            <p class="text-support">
+              OBS: Se caso seu gasto for maior que o orçamento a calculadora
+              avisará que seu orçamento estourou
+            </p>
+            <div class="div-budget">
+                <img src="../images/tutorial/valor-final.png" alt="Valor total - Dentro do orçamento" class="budget-green"/>
+                <img src="../images/tutorial/valor-final-estourado.png" alt="Valor total - Dentro do orçamento" class="budget-red" /></div>
+          </li>
+        </ul>
+        <hr>
+        <h2>Edição de Itens</h2>
+        <ul>
+          <li>
+            <p class="main-text">
+              Para editar os itens da lista basta clicar no simbolo de
+              <img src="../images/tutorial/editar.png" alt="Botão editar" class="edit-icon"/> (lápiz) para que
+              abra a tela de edição do produto:
+            </p>
+            <img src="../images/tutorial/editar-produto.png" alt="Tela de editar produto" class="edit-produto"/>
+          </li>
+          <li>
+            <h2>Remoção do item na lista</h2>
+            <p class="main-text">
+              Para remover itens da lista basta clicar no simbolo de
+              <img src="../images/tutorial/remover.png" alt="" /> (lixeira) ao
+              lado do botão editar:
+            </p>
+            <img src="../images/tutorial/excluir-produto.png" alt="Tela de remoção de produto" class="remover-produto">
+          </li>
+        </ul>
+      </div>
+    </article>
+    <div class="div-voltar-btn">
+      <button id="btnVoltarTopo" class="voltar-topo">Voltar ao Topo</button>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+      crossorigin="anonymous"
+    ></script>
+
+    
+    <script src="../script/navbar.js"></script>
+    <script src="../script/scroll-top.js"></script>
+  
+    </script>
+  </body>
+</html>

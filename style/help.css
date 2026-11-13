@@ -1,0 +1,296 @@
+
+/* Configurações gerais */
+
+* {
+    box-sizing: border-box;
+    
+}
+
+/* Títulos */
+
+h2 {
+    text-align: center;
+    padding: 50px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+/* Tutorial */
+
+.tutorial-list {
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+    min-width: 0;
+}
+
+.tutorial-list ul {
+    padding-left: 0;
+    margin: 0;
+}
+
+.tutorial-list ul li {
+    padding: 30px;
+    list-style: none;
+}
+
+/* Textos */
+
+.main-text {
+    font-size: 16px;
+}
+
+.text-support {
+    font-size: 12px;
+    padding-top: 20px;
+}
+
+/* Imagens do tutorial */
+
+.tutorial-list img.img-adicionar,
+.tutorial-list img.edit-produto,
+.tutorial-list img.remover-produto {
+    display: block;
+    width: 299px;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    object-fit: contain;
+}
+
+/* Ícones */
+
+.edit-icon {
+    width: 32px;
+    height: auto;
+}
+
+/* Orçamento */
+
+li .div-budget {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding: 20px;
+}
+
+.budget-green,
+.budget-red {
+    display: block;
+    width: 360px;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Efeitos de hover */
+
+.tutorial-list img.img-budget,
+.tutorial-list img.img-adicionar,
+.tutorial-list img.edit-produto,
+.tutorial-list img.remover-produto,
+.tutorial-list img.budget-green,
+.tutorial-list img.budget-red {
+    transform: scale(1);
+    transition: transform 0.3s ease;
+    transform-origin: center;
+}
+
+
+@media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
+    .tutorial-list img.img-budget:hover,
+    .tutorial-list img.img-adicionar:hover,
+    .tutorial-list img.edit-produto:hover,
+    .tutorial-list img.remover-produto:hover,
+    .tutorial-list img.budget-green:hover,
+    .tutorial-list img.budget-red:hover {
+        transform: scale(1.2);
+    }
+    /* Voltar ao topo */
+
+    .voltar-topo{
+    background-color: #8F6BF3;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 15px;
+    font-weight: 400;
+    color: #F7F9E8;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1000;
+    }
+}
+
+/* Tutorial adaptável */
+
+article.container > h2,
+.tutorial-list h2 {
+    padding: 35px 12px;
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+}
+
+.tutorial-list ul li {
+    padding: 25px 12px;
+}
+
+.tutorial-list img {
+    max-width: 100%;
+    height: auto;
+}
+
+.tutorial-list .img-adicionar,
+.tutorial-list .edit-produto,
+.tutorial-list .remover-produto {
+    width: 299px;
+    max-width: 100%;
+}
+
+.tutorial-list .budget-green,
+.tutorial-list .budget-red {
+    width: 360px;
+    max-width: 100%;
+}
+
+li .div-budget {
+    gap: 18px;
+    flex-wrap: wrap;
+    padding: 12px 0;
+}
+
+/* Tablets */
+
+@media (max-width: 768px) {
+    h2 {
+        padding: 35px 12px;
+    }
+
+    .tutorial-list ul li {
+        padding: 20px 5px;
+    }
+
+    .tutorial-list img.img-adicionar,
+    .tutorial-list img.edit-produto,
+    .tutorial-list img.remover-produto {
+        width: 299px;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .div-budget {
+        justify-content: center;
+    }
+
+    .tutorial-list .budget-green,
+    .tutorial-list .budget-red {
+        width: 320px;
+        max-width: 100%;
+    }
+}
+
+/* Celulares */
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 20px;
+        padding: 25px 10px;
+    }
+
+    .main-text {
+        font-size: 14px;
+    }
+
+    .text-support {
+        font-size: 12px;
+    }
+
+    .tutorial-list ul li {
+        padding: 20px 8px;
+    }
+
+    .tutorial-list img.img-adicionar,
+    .tutorial-list img.edit-produto,
+    .tutorial-list img.remover-produto {
+        width: 299px;
+        max-width: 100%;
+        height: auto;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    li .div-budget {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .tutorial-list .budget-green,
+    .tutorial-list .budget-red {
+        width: 100%;
+        max-width: 320px;
+        height: auto;
+    }
+
+    .div-voltar-btn{
+        padding-bottom: 40px;
+    }
+
+    .voltar-topo{
+    background-color: #8F6BF3;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 15px;
+    font-weight: 400;
+    color: #F7F9E8;
+    display: block;
+    margin: auto;
+    }
+}
+
+/* Celulares pequenos */
+
+@media (max-width: 360px) {
+    h2 {
+        font-size: 18px;
+    }
+
+    .main-text {
+        font-size: 13px;
+    }
+
+    .tutorial-list ul li {
+        padding: 15px 5px;
+    }
+
+    .tutorial-list img.img-adicionar,
+    .tutorial-list img.edit-produto,
+    .tutorial-list img.remover-produto {
+        max-width: 100%;
+    }
+
+    .voltar-topo{
+    background-color: #8F6BF3;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 15px;
+    font-weight: 400;
+    color: #F7F9E8;
+}
+}
+
+/* Acessibilidade */
+
+@media (prefers-reduced-motion: reduce) {
+    .tutorial-list img.img-budget,
+    .tutorial-list img.img-adicionar,
+    .tutorial-list img.edit-produto,
+    .tutorial-list img.remover-produto,
+    .tutorial-list img.budget-green,
+    .tutorial-list img.budget-red {
+        transition: none;
+    }
+}
