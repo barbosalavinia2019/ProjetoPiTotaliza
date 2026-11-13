@@ -1,14 +1,11 @@
 <!doctype html>
-
 <html lang="pt-br">
   <head>
     <meta charset="utf-8" />
-
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    
 
     <link
       rel="stylesheet"
@@ -18,32 +15,38 @@
     />
 
     <link rel="stylesheet" href="./style/style.css" />
+    <link rel="stylesheet" href="./style/navbar.css" />
+
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap"
       rel="stylesheet"
     />
 
-    <title>Totaliza</title>
+    <title>Totaliza - Calculadora</title>
   </head>
 
   <body>
     <div class="menu">
       <div class="container align-items-center">
-        <h1>
-          <img
-            src="./images/Totaliza-logo-white.svg"
-            alt="Totaliza Logo"
-            class="logo-totaliza"
-          />
-        </h1>
-
-        <nav>
-          <a class="quem-somos" href="./pages/aboutus.html">Quem somos?</a>
+        <a href="../index.html">
+          <h1>
+            <img
+              src="../images/Totaliza-logo-white.svg"
+              alt="Totaliza Logo"
+              class="logo-totaliza"
+            />
+          </h1>
+        </a>
+        <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span></button>
+        <nav class="nav-bar">
+          <a class="quem-somos" href="../pages/ourtech.html">Nossa Tecnologia</a>
+          <a class="quem-somos" href="../pages/desperdicio.html">Desperdicio Zero</a>
+          <a class="quem-somos" href="../pages/economia.html">Economia Domestica</a>
+          <a class="quem-somos" href="../pages/help.html">Central de ajuda</a>
+          <a class="quem-somos" href="../pages/aboutus.html">Quem Somos?</a>
         </nav>
       </div>
     </div>
@@ -91,6 +94,7 @@
       </button>
     </div>
 
+    <!-- MODAL: Adicionar Produto -->
     <div
       class="modal fade"
       id="modalProduto"
@@ -199,6 +203,7 @@
       </div>
     </div>
 
+    <!-- MODAL: Editar Orçamento -->
     <div
       class="modal fade"
       id="modalOrcamento"
@@ -240,8 +245,7 @@
       </div>
     </div>
 
-    <!-- NOVO MODAL: Editar Produto -->
-
+    <!-- MODAL: Editar Produto -->
     <div
       class="modal fade"
       id="modalEditarProduto"
@@ -322,6 +326,38 @@
       </div>
     </div>
 
+    <!-- MODAL: Confirmar Exclusão -->
+    <div
+      class="modal fade"
+      id="modalConfirmarExclusao"
+      tabindex="-1"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Excluir Produto</h5>
+          </div>
+
+          <div class="modal-body">
+            <p id="textoConfirmacaoExclusao" class="mb-0 text-dark">
+              Deseja realmente excluir este item da sua lista?
+            </p>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn-cancel" data-dismiss="modal">
+              Cancelar
+            </button>
+            <button type="button" class="btn-danger" id="btnConfirmarExclusao">
+              Sim, excluir
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script
       src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -335,5 +371,6 @@
     ></script>
 
     <script src="./script/script.js"></script>
+    <script src="./script/navbar.js"></script>
   </body>
 </html>

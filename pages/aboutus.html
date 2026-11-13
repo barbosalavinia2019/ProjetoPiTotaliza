@@ -15,8 +15,16 @@
     />
     <link rel="stylesheet" href="../style/style.css" />
     <link rel="stylesheet" href="../style/about.css" />
+    <link rel="stylesheet" href="../style/navbar.css" />
 
-    <title>Totaliza</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Sobre nós</title>
   </head>
   <body>
     <div class="menu">
@@ -30,8 +38,14 @@
             />
           </h1>
         </a>
-        <nav>
-          <a class="calculadora" href="../index.html">Calculadora</a>
+        <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span></button>
+        <nav class="nav-bar" id="menu-principal">
+          <a class="quem-somos" href="../index.html">Calculadora</a>
+        <a class="quem-somos" href="../pages/ourtech.html">Nossa Tecnologia</a>
+        <a class="quem-somos" href="../pages/desperdicio.html">Desperdicio Zero</a>
+        <a class="quem-somos" href="../pages/economia.html">Economia Domestica</a>
+        <a class="quem-somos" href="../pages/help.html">Central de ajuda</a>
+        <a class="quem-somos" href="../pages/aboutus.html">Quem Somos?</a>
         </nav>
       </div>
     </div>
@@ -122,5 +136,7 @@
     ></script>
 
     <script src="./script/script.js"></script>
+  <script src="../script/navbar.js"></script>
+  
   </body>
 </html>

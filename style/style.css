@@ -11,47 +11,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Menu */
-
-.menu {
-    background-color: #8168f1;
-    width: 100%;
-    padding: 10px 0;
-}
-
-.menu .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-}
-
-.menu h1 {
-    margin: 0;
-}
-
-.logo-totaliza {
-    width: 220px;
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-.quem-somos {
-    text-decoration: none;
-    font-size: 1.1rem;
-    color: #FFF;
-    font-weight: 500;
-    white-space: nowrap;
-    transition: color 0.3s ease;
-}
-
-.quem-somos:hover {
-    color: #e0e0e0;
-    text-decoration: none;
-}
-
-/*  Corpo da lista */
+/* Corpo da lista */
 
 .list-body {
     padding: 50px 0;
@@ -118,6 +78,18 @@ body {
 .edit-icon {
     width: 18px;
     height: auto;
+}
+
+.botao-erase{
+    background-color: red;
+}
+
+.erase-icon{
+    width: 16px;
+}
+
+.btn-danger{
+    background-color: red;
 }
 
 /* Lista */
@@ -315,7 +287,7 @@ body {
     flex: 1 1 auto;
 }
 
-/*  Botões do Modal */
+/* Botões do Modal */
 
 .label {
     font-weight: 700;
@@ -340,6 +312,23 @@ body {
 
 .btn {
     background-color: #5b3ce6;
+}
+
+.btn,
+.btn-danger {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    color: #fff;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 15px;
+    transition: background-color .15s ease-in-out;
+    cursor: pointer;
 }
 
 .btn:hover {
@@ -400,7 +389,6 @@ body {
 /* Tablets e Celulares até 768px */
 
 @media (max-width: 768px) {
-
     .list-body {
         padding: 30px 0;
     }
@@ -468,7 +456,6 @@ body {
 /* Celulares até 576px */
 
 @media (max-width: 576px) {
-
     .menu {
         padding: 12px 0;
     }
@@ -574,7 +561,6 @@ body {
         padding: 10px 22px;
     }
 
-
     .modal-dialog {
         width: auto;
         max-width: none;
@@ -609,10 +595,9 @@ body {
     }
 }
 
-/* Celulares até 360p*/
+/* Celulares até 360px */
 
 @media (max-width: 360px) {
-
     .logo-totaliza {
         width: 125px;
     }
@@ -656,7 +641,6 @@ body {
 /* Acessibilidade */
 
 @media (prefers-reduced-motion: reduce) {
-
     *,
     *::before,
     *::after {
@@ -665,3 +649,5 @@ body {
         scroll-behavior: auto !important;
     }
 }
+
+

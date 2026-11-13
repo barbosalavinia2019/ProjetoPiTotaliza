@@ -1,0 +1,76 @@
+/* Menu */
+
+.menu {
+    background-color: #8F6BF3;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.menu .container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.menu h1 {
+    margin: 0;
+}
+
+.logo-totaliza {
+    width: 180px;
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.quem-somos {
+    font-family: "Poppins", sans-serif;
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: #F7F9E8;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+}
+
+.quem-somos:hover {
+    color: #e0e0e0;
+    text-decoration: none;
+}
+
+.nav-bar a{
+    color: #F7F9E8;
+    text-decoration: none;
+    padding-left: 20px;
+    font-size: 14px;
+}
+
+
+
+
+/* Navegação responsiva compartilhada */
+*, *::before, *::after { box-sizing: border-box; }
+html { overflow-x: clip; }
+body { min-width: 0; overflow-x: clip; }
+img { max-width: 100%; height: auto; }
+.menu .container { justify-content: space-between; gap: 18px; }
+.menu .container > a { flex-shrink: 0; }
+.nav-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 10px 16px; }
+.nav-bar a { padding-left: 0; font-size: 0.875rem; }
+.menu-toggle { display: none; background: transparent; border: 1px solid rgba(255,255,255,.7); border-radius: 8px; padding: 10px; cursor: pointer; }
+.menu-toggle span { display: block; width: 23px; height: 2px; margin: 4px 0; background: white; }
+.menu-toggle:focus-visible, .nav-bar a:focus-visible { outline: 3px solid white; outline-offset: 3px; }
+@media (max-width: 1024px) {
+  .menu .container { flex-wrap: wrap; }
+  .nav-bar { flex: 1 1 100%; justify-content: center; }
+}
+@media (max-width: 768px) {
+  .menu { padding: 12px 0; }
+  .menu .container { flex-wrap: wrap; justify-content: space-between; }
+  .logo-totaliza { width: 145px; }
+  .menu-toggle { display: block; }
+  .nav-bar { display: none; flex: 1 1 100%; flex-direction: column; align-items: stretch; gap: 0; padding: 8px 0; }
+  .nav-bar.is-open { display: flex; }
+  .nav-bar a { display: block; padding: 12px 10px; white-space: normal; }
+  .nav-bar a:hover { background: rgba(255,255,255,.12); transform: none; }
+}
