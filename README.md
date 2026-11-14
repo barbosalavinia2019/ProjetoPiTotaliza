@@ -7,6 +7,11 @@ O Totaliza é uma plataforma desenvolvida para facilitar a organização das com
 
 Estas instruções permitirão que você obtenha uma cópia do projeto em sua máquina local para fins de desenvolvimento, teste e utilização.
 
+### 🎥 Apresentação em vídeo
+
+Para assistir a apresentação [clique aqui](https://www.youtube.com/watch?v=33bDS6RjZok) para ser redirecionado ao vídeo de apresentação do projeto.
+
+
 ### 📋 Pré-requisitos
 
 Para acessar e executar o projeto, você precisará de:
@@ -125,7 +130,7 @@ As seguintes tecnologias e ferramentas foram utilizadas no desenvolvimento do pr
   
 Confira o protótipo visual do Totaliza desenvolvido no Figma:  
   
-🔗 [Acessar protótipo do Totaliza](https://www.figma.com/design/2uKl6Pnr5o5fEzXvRGOQoN/Projeto-P.I?node-id=1-2&t=27sjehuIQpKK9mU8-0)
+🔗 [Acessar a protótipagem do Totaliza](https://www.figma.com/design/2uKl6Pnr5o5fEzXvRGOQoN/Projeto-P.I?node-id=1-2&t=27sjehuIQpKK9mU8-0)
 
 ### 🖇️ Colaborando
 
